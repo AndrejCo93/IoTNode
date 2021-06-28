@@ -72,5 +72,42 @@ public class App {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Call<List<WeatherData>> historyWeather =
+                iotNode.getWeatherStationService().getHistoryWeather("station_1","28/06/2021 01:00","28/06/2021 03:00");
+
+        try {
+            Response<List<WeatherData>> response = historyWeather.execute();
+
+            if (response.isSuccessful()) { // Dotaz na server bol neúspešný
+                //Získanie údajov vo forme Zoznam lokacií
+                List<WeatherData> body = response.body();
+
+                System.out.println(body);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Call<List<WeatherData>> historyWeatherFields =
+                iotNode.getWeatherStationService().getHistoryWeatherFields("station_1","28/06/2021 01:00","28/06/2021 03:00", List.of("airTemperature"));
+
+        try {
+            Response<List<WeatherData>> response = historyWeatherFields.execute();
+
+            if (response.isSuccessful()) { // Dotaz na server bol neúspešný
+                //Získanie údajov vo forme Zoznam lokacií
+                List<WeatherData> body = response.body();
+
+                System.out.println(body);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        double test = iotNode.getAverageTemperature("station_1","28/06/2021 01:00","28/06/2021 03:00");
+        System.out.println(test);
     }
 }

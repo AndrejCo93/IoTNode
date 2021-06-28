@@ -31,11 +31,16 @@ public interface WeatherStationService {
     Call<WeatherData> getCurrentWeather(@Path("station") String station,
                                         @Query("fields") List<String> fields);
 
+    @GET("/weather/{station}/history")
+    Call<List<WeatherData>> getHistoryWeather(@Path("station") String station,
+                                              @Query("from") String from,
+                                              @Query("to") String to);
 
-    // ... getHistoryWeather(station, from, to);
-
-
-    // ... getHistoryWeather(  station, from, to, fields);
+    @GET("/weather/{station}/history")
+    Call<List<WeatherData>> getHistoryWeatherFields(@Path("station") String station,
+                                                           @Query("from") String from,
+                                                           @Query("to") String to,
+                                                           @Query("fields") List<String> fields);
 
     // ... getToken(authorization, claims);
 
