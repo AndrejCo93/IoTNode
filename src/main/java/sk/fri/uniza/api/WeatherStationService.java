@@ -12,19 +12,24 @@ import java.util.Map;
 
 public interface WeatherStationService {
 
-    // ... getCurrentWeatherAsMap(station);
+    @GET("/weather/{station}/current")
+    Call<Map<String, String>> getCurrentWeatherAsMap(
+            @Path("station") String station);
 
+    @GET("/weather/{station}/current")
+    Call<Map<String, String>> getCurrentWeatherAsMap(
+            @Path("station") String station,
+            @Query("fields") List<String> fields);
 
-    // ... getCurrentWeatherAsMap(station, fields);
+    @GET("/weather/locations")
+    Call<List<Location>> getStationLocations();
 
+    @GET("/weather/{station}/current")
+    Call<WeatherData> getCurrentWeather(@Path("station") String station);
 
-    // ... getStationLocations();
-
-
-    // ... getCurrentWeather(station);
-
-
-    // ... getCurrentWeather(station, fields);
+    @GET("/weather/{station}/current")
+    Call<WeatherData> getCurrentWeather(@Path("station") String station,
+                                        @Query("fields") List<String> fields);
 
 
     // ... getHistoryWeather(station, from, to);
