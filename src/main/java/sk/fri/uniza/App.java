@@ -73,7 +73,7 @@ public class App {
             e.printStackTrace();
         }
 
-        Call<List<WeatherData>> historyWeather =
+        /*Call<List<WeatherData>> historyWeather =
                 iotNode.getWeatherStationService().getHistoryWeather("station_1","28/06/2021 01:00","28/06/2021 03:00");
 
         try {
@@ -105,7 +105,7 @@ public class App {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         double test = iotNode.getAverageTemperature("station_1","28/06/2021 01:00","28/06/2021 03:00");
         System.out.println(test);
